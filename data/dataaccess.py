@@ -26,20 +26,28 @@ def get_user(xid):
         print "GET_USER_FUNCTION", user
         return user
 
-def add_request(params):
+def create_request(params):
     pass
 
-def get_request(params):
+def get_request(id):
     pass
 
 def del_request(params):
     pass
 
-def add_offer(params):
+def create_offer(params):
+    # (1 XID, 2 ADDRESS, 3 PRICE_MONTHLY, 4 PRICE_ONCE, 5 SIZE, 5 TITLE, 6 DESCRIPTION, 7 START, 8 END, 9 WE_OFFER, 10 WE_WANT, 11 ALBUM_ID)
+    result = _execute_sql("INSERT INTO offer VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", params)
+    id = result[1]
+    return id
+
+def get_offer(id):
     pass
 
 def del_offer(params):
     pass
 
 if __name__ == '__main__':
-    print "Fetching test data: ", get_user("TEST_USER")
+    DB_FILE_NAME ="../ff.db"
+    print "Fetching test data:", get_user("TEST_USER")
+    print "ADDING NEW OFFER:", create_offer(("TEST_USER", "A5, 1 Mannheim", 450, 50, 43.5, "DEVELOPER LOFT", "FANCY LOFT IN DEN MANNHEIM QUADRATEN", "1.1.2017", "2.4.2017", "{}", "{}", 0))
