@@ -22,16 +22,15 @@
           url: "http://founderflats.sytes.net/login",
           data: JSON.stringify(response.user),
           success: function(data, textstatus, responseObject){
-            console.log("success")
-            console.log(data);
-            console.log(textstatus);
-            console.log(responseObject);
+            if(data["id"]){
+              console.log(data["id"]);
+            }
           },
           contentType: "application/json; charset=utf-8",
           dataType: "json"
         });
       } else if (response.error) {
-        window.location ="http://founderflats.sytes.net/"
+        // window.location ="http://founderflats.sytes.net/"
       }
 
       document.getElementById('output').innerHTML = output;
@@ -39,7 +38,7 @@
   </script>
 </head>
 <body>
-  <img id="userimg" width="70" height="93" src="" style="background-color: #212121;"></img>
+  <img id="userimg" width="70" height="93" src="" style="background-color: #212121;" />
   <br />
   <!-- Place the plugin script -->
   <div id="fu">

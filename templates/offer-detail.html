@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='media/favicon.ico') }}">
+
+    <title>FounderFlats</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">FounderFlats</a>
+          <span class="brand-info">LEARN CONNECT LIVE</span>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/offers">Offers</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li><a href="/createoffer">Create Offer</a></li>
+            <li><a href="/createrequest">Create Request</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container contentsite">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>&quot;{{ offer['title'] }}&quot;</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-6 ff-offer-info">
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">We have</div>
+            <div class="ff-offer-info-item-detail categories">
+              {% if offer['we_offer']['1'] != '0' %} <p class="cat-it">{{ offer['we_offer']['1'] }}</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_offer']['2'] != '0' %} <p class="cat-design">{{ offer['we_offer']['2'] }}</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_offer']['3'] != '0' %} <p class="cat-law">{{ offer['we_offer']['3'] }}</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_offer']['4'] != '0' %} <p class="cat-mgmt">{{ offer['we_offer']['4'] }}</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_offer']['5'] != '0' %} <p class="cat-none">{{ offer['we_offer']['5'] }}</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">We need</div>
+            <div class="ff-offer-info-item-detail categories">
+              {% if offer['we_need']['1'] != '0' %} <p class="cat-it">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_need']['2'] != '0' %} <p class="cat-design">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_need']['3'] != '0' %} <p class="cat-law">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_need']['4'] != '0' %} <p class="cat-mgmt">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+              {% if offer['we_need']['5'] != '0' %} <p class="cat-none">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Timespan</div>
+            <div class="ff-offer-info-item-detail">
+              from 
+              <b>{% if offer['from'] %} {{ offer['from'] }} {% else %} now {% endif %}</b>
+              up until
+              <b>{% if offer['to'] %} {{ offer['to'] }} {% else %} unlimited {% endif %}</b>
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Address</div>
+            <div class="ff-offer-info-item-detail">{{ offer['address'] }}</div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Room size</div>
+            <div class="ff-offer-info-item-detail">{{ offer['size'] }}m²</div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Monthly Costs</div>
+            <div class="ff-offer-info-item-detail">
+              {% if offer['price_monthly'] %} €{{ offer['price_monthly'] }}0 {% else %} - {% endif %}
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Onetime Costs</div>
+            <div class="ff-offer-info-item-detail">
+              {% if offer['price_single'] %} €{{ offer['price_single'] }}0 {% else %} - {% endif %}
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Contact person</div>
+            <div class="ff-offer-info-item-detail">
+              {{ offer['name'] }}
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title ff-offer-info-item-full">Description</div>
+            <div class="ff-offer-info-item-detail ff-offer-info-item-full">{{ offer['description'] }}</div>
+          </div>
+
+        </div>
+        <div class="col-xs-12 col-md-6 ff-map-wrapper">
+            <div class="col-xs-12 col-md-7 ff-map" id="googleMap"></div>
+        </div>
+      </div>
+
+      <div class="contact-link-wrapper">
+        <a href="{{ offer['profile'] }}" class="btn btn-success" target="_blank">Anbieter bei XING kontaktieren</a>
+      </div>
+
+      <script type="text/javascript">
+        var _address = "{{ offer['address'] }}";
+      </script>
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 FounderFlats</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqLWZNP0JIVI12zty6460l19SpV-sLgfg&callback=initMap" async defer></script>
+
+    <script src="{{ url_for('static', filename='js/offer-detail.js') }}"></script>
+  </body>
+</html>

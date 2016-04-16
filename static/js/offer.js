@@ -1,6 +1,6 @@
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var labelIndex = 0;
 var markerlist = {};
+
 
 function initMap() {
 
@@ -9,26 +9,35 @@ function initMap() {
     center:new google.maps.LatLng(49.487760, 8.466242),
     zoom:14,
   });
-
-  addMarker({lat: 49.487760, lng: 8.466242}, map);
-  addMarker({lat: 49.489015, lng: 8.472250}, map);
+  var geocoder = new google.maps.Geocoder();
+  $(todo_markers).each(function(index, val) {geocodeAddress(geocoder, map, index, val);});
 }
 
 // Adds a marker to the map.
-function addMarker(location, map) {
+function addMarker(location, map, id) {
   // Add the marker at the clicked location, and add the next-available label
   // from the array of alphabetical characters.
-  var l = labels[labelIndex++ % labels.length];
+  var l = labels[id];
   var marker = new google.maps.Marker({
     position: location,
     label: l,
     map: map,
-            icon: normalIcon()
+    icon: normalIcon()
   });
   markerlist[l] = marker;
 
   marker.addListener('click', function() {
     scrollToEntry(marker.getLabel());
+  });
+}
+
+function geocodeAddress(geocoder, map, index, address) {
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      addMarker(results[0].geometry.location, map, index);
+    } else {
+      addMarker({lat: 49.487760, lng: 8.466242}, map, index);
+    }
   });
 }
 
@@ -64,3 +73,9 @@ function highlightedIcon() {
     url: 'static/media/marker-active.png'
   };
 }
+
+
+$(function () {
+  var a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $( ".entry" ).each(function( index ) {$(this).attr("id", "entry-"+a[index]); $(this).find(".number").text(a[index])});
+})

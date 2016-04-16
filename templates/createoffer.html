@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='media/favicon.ico') }}">
+
+    <title>FounderFlats</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">FounderFlats</a>
+          <span class="brand-info">LEARN CONNECT LIVE</span>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/offers">Offers</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li class="active"><a href="/createoffer">Create Offer</a></li>
+            <li><a href="/createrequest">Create Request</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container contentsite">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Inserieren</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-4 ff-offer-info">
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Your name</div>
+            <div class="ff-offer-info-item-detail">Jim Beam</div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Your Skills</div>
+            <div class="ff-offer-info-item-detail categories">
+              <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="IT">&nbsp;</p>
+              <p class="cat-design" data-toggle="tooltip" data-placement="bottom" title="Design">&nbsp;</p>
+              <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Law">&nbsp;</p>
+              <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Management">&nbsp;</p>
+              <p class="cat-none" data-toggle="tooltip" data-placement="bottom" title="Other">&nbsp;</p>
+            </div>
+          </div>
+
+          <div class=" ff-offer-info-item">
+            <div class="ff-offer-info-item-title">Type</div>
+            <div class="ff-offer-info-item-detail">
+            	<div class="btn-group typeselector" role="group">
+				  <button type="button" class="btn btn-primary type-offer">Offer</button>
+				  <button type="button" class="btn btn-default type-request">Request</button>
+				</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-xs-12 col-md-8 ff-form">
+        	<form action="/createoffer" method="POST">
+			  <div class="form-group">
+			    <label for="form-title">Title</label>
+			    <input type="text" class="form-control" id="form-title" placeholder="Title" name="title">
+			  </div>
+
+			  <div class="form-group">
+				<label for="form-offer">Offering Skills</label>
+				<div>
+					
+					<div class="ff-checkbox">
+						<div class="state-wide"><input type="number" id="replyNumber" min="0" max="20" step="1" data-bind="value:replyNumber" name="offer_it" placeholder="# IT" value="0"></div>
+						<div class="desc cat-it">IT</div>
+					</div>
+					<div class="ff-checkbox">
+						<div class="state-wide"><input type="number" id="replyNumber" min="0" max="20" step="1" data-bind="value:replyNumber" name="offer_design" placeholder="# Design" value="0"></div>
+						<div class="desc cat-design">Design</div>
+					</div>
+					<div class="ff-checkbox">
+						<div class="state-wide"><input type="number" id="replyNumber" min="0" max="20" step="1" data-bind="value:replyNumber" name="offer_law" placeholder="# Law" value="0"></div>
+						<div class="desc cat-law">Law</div>
+					</div>
+					<div class="ff-checkbox">
+						<div class="state-wide"><input type="number" id="replyNumber" min="0" max="20" step="1" data-bind="value:replyNumber" name="offer_mgmt" placeholder="# Management" value="0"></div>
+						<div class="desc cat-mgmt">Management</div>
+					</div>
+					<div class="ff-checkbox">
+						<div class="state-wide"><input type="number" id="replyNumber" min="0" max="20" step="1" data-bind="value:replyNumber" name="offer_other" placeholder="# Other" value="0"></div>
+						<div class="desc cat-none">Other</div>
+					</div>
+
+				</div>
+			  </div>
+
+			  <div class="form-group">
+				<label for="form-offer">Looking for Skills</label>
+				<div>
+
+					<div class="ff-checkbox ff-checkbox-toggle">
+						<input type="hidden" name="search_it" value="0">
+						<div class="state">✘</div>
+						<div class="desc cat-it">IT</div>
+					</div>
+
+					<div class="ff-checkbox ff-checkbox-toggle">
+						<input type="hidden" name="search_design" value="0">
+						<div class="state">✘</div>
+						<div class="desc cat-design">Design</div>
+					</div>
+
+					<div class="ff-checkbox ff-checkbox-toggle">
+						<input type="hidden" name="search_law" value="0">
+						<div class="state">✘</div>
+						<div class="desc cat-law">Law</div>
+					</div>
+
+					<div class="ff-checkbox ff-checkbox-toggle">
+						<input type="hidden" name="search_mgmt" value="0">
+						<div class="state">✘</div>
+						<div class="desc cat-mgmt">Management</div>
+					</div>
+
+					<div class="ff-checkbox ff-checkbox-toggle">
+						<input type="hidden" name="search_other" value="0">
+						<div class="state">✘</div>
+						<div class="desc cat-none">Other</div>
+					</div>
+
+				</div>
+			  </div>
+
+
+			  <div class="form-group">
+			    <label for="form-address">Address</label>
+			    <input type="text" class="form-control" id="form-address" placeholder="Address" name="address">
+			  </div>
+
+		      <div class="row">
+
+				  <div class="form-group col-xs-12 col-md-4">
+				    <label for="form-monthly">Monthly costs</label>
+				    <div class="input-group">
+				      <div class="input-group-addon">€</div>
+				      <input type="text" class="form-control" id="form-monthly" placeholder="Monthly costs" name="monthly_cost">
+				      <div class="input-group-addon">.00</div>
+				    </div>
+				  </div>
+
+				  <div class="form-group col-xs-12 col-md-4">
+				    <label for="form-single">Onetime costs</label>
+				    <div class="input-group">
+				      <div class="input-group-addon">€</div>
+				      <input type="text" class="form-control" id="form-single" placeholder="Onetime costs" name="single_cost">
+				      <div class="input-group-addon">.00</div>
+				    </div>
+				  </div>
+
+				  <div class="form-group col-xs-12 col-md-4">
+				    <label for="form-size">Room size</label>
+				    <div class="input-group">
+				      <input type="text" class="form-control" id="form-size" placeholder="Room size" name="size">
+				      <div class="input-group-addon">m²</div>
+				    </div>
+				  </div>
+
+			  </div>
+
+		      <div class="row">
+
+				  <div class="form-group col-xs-12 col-md-6">
+				    <label for="form-from">From</label>
+				    <div class="input-group">
+					    <input type="text" class="form-control datepicker" name="from">
+					    <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span></div>
+					</div>
+				</div>
+
+				  <div class="form-group col-xs-12 col-md-6">
+				    <label for="form-to">Up until</label>
+				    <div class="input-group">
+					    <input type="text" class="form-control datepicker" name="to">
+					    <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span></div>
+					</div>
+				</div>
+
+			  </div>
+
+			  <div class="form-group">
+			    <label for="form-address">Description</label>
+			    <textarea class="form-control" rows="3" placeholder="Beschreibung" name="description"></textarea>
+			  </div>
+
+
+
+			  <div class="contact-link-wrapper">
+			  	<button type="submit" class="btn btn-primary">Submit</button>
+			  </div>
+			</form>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 FounderFlats</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/create.js') }}"></script>
+  </body>
+</html>

@@ -47,6 +47,17 @@ body {
 .jumbotron h1 {
 	margin: 10% 0;
 	text-align: center;
+	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}
+
+.ff-description h3 {
+	text-align: center;
+	margin: 0 0 20px;
+}
+
+.ff-description {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
 }
 
 .ff-info h2 {
@@ -100,19 +111,35 @@ body {
 }
 
 .ff-map-list .header {
-	padding: 5px 10px;
+	padding: 2% 10px;
 	background-color: #EEE;
 	font-weight: bold;
 	text-align: center;
 	height: 5%;
 }
 
+.ff-map-list .footer {
+	padding: 2% 10px;
+	background-color: #EEE;
+	font-weight: bold;
+	text-align: center;
+	height: 5%;
+}
+
+.ff-map-list .footer.categories p {
+	width: auto !important;
+	padding: 0 8px;
+}
+
 .ff-map-list .reallist {
 	overflow-y: auto;
-	height: 95%;
+	height: 90%;
 }
 
 .ff-map-list .entry {
+	color: #000;
+	text-decoration: none;
+	display: block;
 	padding: 10px 0;
 	border-bottom: 1px solid #EEE;
 	cursor: pointer;
@@ -146,9 +173,6 @@ body {
 	margin-bottom: 5px;
 }
 
-.ff-map-list .entry .cat-groups div {
-	height: 20px;
-}
 
 .ff-map-list .entry .cat-groups span {
 	padding: 0;
@@ -156,12 +180,13 @@ body {
 }
 
 .ff-map-list .entry .cat-groups .categories {
+	height: 20px;
 	display: inline-block;
 	width: 48%;
 	text-align: center;
 }
 
-.ff-map-list .entry .cat-groups .categories p {
+.categories p {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
@@ -200,4 +225,115 @@ body {
 	.ff-maprow:before {
 		padding-top: 50%;
 	}
+}
+
+
+/* OFFER DETAILS */
+.contentsite h2 {
+	text-align: center;
+	margin-bottom: 35px;
+}
+.contentsite h4 {
+	text-align: center;
+	margin-bottom: 35px;
+}
+
+.ff-map-wrapper {
+	height: 500px;
+}
+
+.ff-map-wrapper .ff-map {
+	height: 100%;
+	width: 100%;
+}
+
+.ff-offer-info {
+
+}
+
+.ff-offer-info .ff-offer-info-item {
+	margin: 20px 0;
+}
+
+.ff-offer-info .ff-offer-info-item .ff-offer-info-item-title {
+	display: inline-block;
+	width: 25%;
+	font-weight: bold;
+}
+
+.ff-offer-info .ff-offer-info-item .ff-offer-info-item-detail {
+	display: inline-block;
+	width: 70%;
+}
+
+
+.ff-offer-info .ff-offer-info-item .ff-offer-info-item-detail.categories p {
+	cursor: pointer;
+}
+
+.ff-offer-info-item-full {
+	width: 100% !important;
+}
+
+.contact-link-wrapper {
+	text-align: center;
+	margin-top: 25px;
+}
+
+.ff-form .checkbox {
+	display: inline-block;
+	margin-right: 10px;
+	padding: 0 4px;
+	color: #fff;
+}
+
+.ff-form .ff-offering label {
+	padding-left: 5px;
+}
+
+.ff-form .ff-offering input {
+	width: 75px;
+	padding: 0 4px;
+    height: 20px;
+    margin: 0 10px 0 0;
+}
+
+.ff-form .ff-checkbox {
+	border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	border: solid 1px #ccc;
+	display: inline-block;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+.ff-form .ff-checkbox .state {
+	width: 20px;
+	display: inline-block;
+	text-align: right;
+    margin-right: 4px;
+}
+
+.ff-form .ff-checkbox .state-wide {
+	width: 40px;
+	display: inline-block;
+    margin-right: 4px;
+}
+
+.ff-form .ff-checkbox .state-wide input {
+	border: none;
+	background: none;
+    width: 48px;
+    padding: 0 0 0 5px;
+	margin: 0;
+}
+
+.ff-form .ff-checkbox .desc {
+	padding: 0 10px;
+	display: inline-block;
+}
+
+.docenter {
+	text-align: center;
 }
