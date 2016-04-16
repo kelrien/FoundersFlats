@@ -4,13 +4,18 @@ from flask import render_template
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+@app.route('/', methods=["GET"])
+def home():
+    return render_template("index.html")
 
-@app.route('/login')
+@app.route('/login', methods=["GET"])
 def login_user():
     return render_template("test.html")
+
+@app.route('/login', methods=["POST"])
+def transmit_credentials():
+    print request.json
+    return True
 
 
 @app.route('/privacy')

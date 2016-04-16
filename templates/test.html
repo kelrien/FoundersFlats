@@ -17,7 +17,6 @@
         output = 'Successful login for ' + response.user.display_name;
         user = response.user;
         $('#userimg').attr("src", response.user.photo_urls.maxi_thumb);
-        $('.spi-wrapper').fadeOut();
       } else if (response.error) {
         window.location ="http://founderflats.sytes.net/"
       }
@@ -30,11 +29,13 @@
   <img id="userimg" width="70" height="93" src="" style="background-color: #212121;"></img>
   <br />
   <!-- Place the plugin script -->
-  <script type="xing/login">
-  {
-    "consumer_key": "fa4e8d203ec01ed033c0"
-  }
-  </script>
+  <div id="fu">
+    <script type="xing/login">
+    {
+      "consumer_key": "fa4e8d203ec01ed033c0"
+    }
+    </script>
+  </div>
 
   <p id="output">No user logged in.</p>
 
