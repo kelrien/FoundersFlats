@@ -21,8 +21,11 @@
           type: "POST",
           url: "http://founderflats.sytes.net/login",
           data: JSON.stringify(response.user),
-          success: function(data){
-            console.log("success");
+          success: function(data, textstatus, responseObject){
+            console.log("success")
+            console.log(data);
+            console.log(textstatus);
+            console.log(responseObject);
           },
           contentType: "application/json; charset=utf-8",
           dataType: "json"
