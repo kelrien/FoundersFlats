@@ -17,6 +17,16 @@
         output = 'Successful login for ' + response.user.display_name;
         user = response.user;
         $('#userimg').attr("src", response.user.photo_urls.maxi_thumb);
+        $.ajax({
+          type: "POST",
+          url: "http://founderflats.sytes.net/login",
+          data: JSON.stringify(response.user),
+          success: function(){
+            console.log("success");
+          },
+          contentType: "application/json; charset=utf-8",
+          dataType: "json"
+        });
       } else if (response.error) {
         window.location ="http://founderflats.sytes.net/"
       }
