@@ -4,6 +4,7 @@ body {
 }
 
 /* PIN COLORS */
+.cat-invis {background-color: #EEE;}
 .cat-none {background-color: #8C9091;}
 .cat-it {background-color: #2980B9;}
 .cat-design {background-color: #F5A503;}
@@ -96,14 +97,19 @@ body {
 
 .ff-map-list {
 	height: 100%;
-	overflow-y: auto;
 }
 
 .ff-map-list .header {
-	padding: 3px 10px;
+	padding: 5px 10px;
 	background-color: #EEE;
 	font-weight: bold;
 	text-align: center;
+	height: 5%;
+}
+
+.ff-map-list .reallist {
+	overflow-y: auto;
+	height: 95%;
 }
 
 .ff-map-list .entry {
