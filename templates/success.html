@@ -8,7 +8,24 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ url_for('static', filename='media/favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='media/favicon/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='media/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='media/favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='media/favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='media/favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='media/favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='media/favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='media/favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='media/favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='media/favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='media/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='media/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='media/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='media/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='media/favicon/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ url_for('static', filename='ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
 
     <title>FounderFlats</title>
 
@@ -41,17 +58,16 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">FounderFlats</a>
-          <span class="brand-info">LEARN CONNECT LIVE</span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/offers">Offers</a></li>
-            <li><a href="/requests">Requests</a></li>
             <li class="active"><a href="/createoffer">Create Offer</a></li>
+            <li><a href="/requests">Requests</a></li>
             <li><a href="/createrequest">Create Request</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/login">Login</a></li>
+            {% if loggedin %} <li><a href="/logout">Logout</a></li> {% else %} <li><a href="/login">Login</a></li> {% endif %}
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -65,7 +81,7 @@
           <h4>Thank you!</h4>
         </div>
         <div class="docenter">
-          <a class="btn btn-primary" href="/">Back home</a>
+          <a class="btn btn-primary" href="/offers">Back to the offer list</a>
         </div>
       </div>
 
@@ -86,6 +102,5 @@
     <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
   </body>
 </html>

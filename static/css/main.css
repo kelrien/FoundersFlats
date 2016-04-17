@@ -45,9 +45,26 @@ body {
 }
 
 .jumbotron h1 {
-	margin: 10% 0;
+	margin: 10% 0 0;
 	text-align: center;
 	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}
+
+.jumbotron h2 {
+	margin: 0 0 8%;
+	text-align: center;
+	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}
+
+.ff-separator {
+	font-size: 22px;
+	text-align: center;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 
 .ff-description h3 {
@@ -58,21 +75,36 @@ body {
 .ff-description {
 	margin-bottom: 15px;
 	padding-bottom: 15px;
+	text-align: center;
 }
 
-.ff-info h2 {
+.ff-info {
+	 margin: 70px 0;
+}
+
+.ff-info h3 {
 	text-align: center;
 }
 
 .ff-info .icon-container {
 	text-align: center;
 	font-size: 40px;
-	margin: 30px 0 15px;
+	margin: 20px 0;
+}
+
+.ff-info .icon-container img {
+	width: 90px;
+	height: 90px;
 }
 
 .ff-info p {
 	text-align: justify;
 	word-wrap: break-word;
+}
+
+.ff-info .bigger {
+	font-size: 16px;
+	text-align: center;
 }
 
 
@@ -111,19 +143,62 @@ body {
 }
 
 .ff-map-list .header {
-	padding: 2% 10px;
+	padding: 5px 10px;
 	background-color: #EEE;
 	font-weight: bold;
 	text-align: center;
-	height: 5%;
+	height: 20%;
 }
 
-.ff-map-list .footer {
-	padding: 2% 10px;
-	background-color: #EEE;
-	font-weight: bold;
+.ff-map-list .header .title {
 	text-align: center;
-	height: 5%;
+	margin-bottom: 15px;
+}
+
+.ff-map-list .header .ff-checkbox {
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
+	border: solid 1px #ccc;
+	display: inline-block;
+	margin-right: 3px;
+	cursor: pointer;
+	font-size: 11px;
+}
+
+.ff-map-list .header .ff-checkbox .state {
+	width: 12px;
+	display: inline-block;
+	text-align: right;
+    margin-right: 2px;
+}
+
+.ff-map-list .header .ff-checkbox .desc {
+	padding: 0 2px;
+	display: inline-block;
+	color: #fff;
+}
+
+.ff-map-list .header .input-group {
+	font-size: 11px;
+}
+.ff-map-list .header .input-group input {
+	font-size: 11px !important;
+	height: 25px;
+}
+
+.ff-map-list .header .input-group .input-group-addon {
+	font-size: 11px !important;
+	height: 15px;
+}
+
+.ff-map-list .header .submit {
+	text-align: center;
+	margin-top: 15px;
+}
+
+.ff-map-list .header .submit>* {
+	margin: 0 10px;
 }
 
 .ff-map-list .footer.categories p {
@@ -133,7 +208,7 @@ body {
 
 .ff-map-list .reallist {
 	overflow-y: auto;
-	height: 90%;
+	height: 80%;
 }
 
 .ff-map-list .entry {
@@ -267,6 +342,16 @@ body {
 }
 
 
+.ff-offer-info .ff-offer-info-item .ff-offer-info-item-title-wide {
+	font-weight: bold;
+}
+
+.ff-offer-info .ff-offer-info-item .ff-offer-info-item-detail-wide {
+	padding: 5px 0 0 15px;
+}
+
+
+
 .ff-offer-info .ff-offer-info-item .ff-offer-info-item-detail.categories p {
 	cursor: pointer;
 }
@@ -332,6 +417,7 @@ body {
 .ff-form .ff-checkbox .desc {
 	padding: 0 10px;
 	display: inline-block;
+	color: #fff;
 }
 
 .docenter {

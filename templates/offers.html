@@ -8,7 +8,24 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ url_for('static', filename='media/favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='media/favicon/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='media/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='media/favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='media/favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='media/favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='media/favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='media/favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='media/favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='media/favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='media/favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='media/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='media/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='media/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='media/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='media/favicon/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ url_for('static', filename='ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
 
     <title>FounderFlats</title>
 
@@ -44,17 +61,16 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">FounderFlats</a>
-          <span class="brand-info">LEARN CONNECT LIVE</span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li class="active"><a href="/offers">Offers</a></li>
-            <li><a href="/requests">Requests</a></li>
             <li><a href="/createoffer">Create Offer</a></li>
+            <li><a href="/requests">Requests</a></li>
             <li><a href="/createrequest">Create Request</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/login">Login</a></li>
+            {% if loggedin %} <li><a href="/logout">Logout</a></li> {% else %} <li><a href="/login">Login</a></li> {% endif %}
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -68,7 +84,98 @@
             <div class="col-xs-12 col-md-7 ff-map" id="googleMap"></div>
             <div class="ff-list col-xs-12 col-md-5 ff-map-list">
               <div class="header">
-                Angebote
+                <div class="title">Filter Offers</div>
+                <form action="/offers" method="POST">
+
+                  <div class="row">
+
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                      <div>
+                        <span>I need: </span>
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="search_it" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-it">IT</div>
+                        </div>
+
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="search_design" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-design">Design</div>
+                        </div>
+
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="search_law" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-law">Law</div>
+                        </div>
+
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="search_mgmt" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-mgmt">Management</div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                      <div>
+                        <span>I got: </span>
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="offer_it" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-it">IT</div>
+                        </div>
+
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="offer_design" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-design">Design</div>
+                        </div>
+
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="offer_law" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-law">Law</div>
+                        </div>
+
+                        <div class="ff-checkbox ff-checkbox-toggle">
+                          <input type="hidden" name="offer_mgmt" value="0">
+                          <div class="state">✘</div>
+                          <div class="desc cat-mgmt">Management</div>
+                        </div>
+
+                      </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="input-group">
+                        <div class="input-group-addon">€</div>
+                        <input type="text" class="form-control" id="form-single" placeholder="Maximum Monthly costs" name="monthly_cost">
+                        <div class="input-group-addon">.00</div>
+                      </div>
+                    </div>
+
+                    <div class="col-xs-6">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="form-size" placeholder="Minimum Room size" name="size">
+                        <div class="input-group-addon">m²</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="submit">
+                    <a class="btn btn-warning" href="/offers">Reset filters</a>
+                    <button type="submit" class="btn btn-success">Filter the offers</button>
+                  </div>
+                </form>
               </div>
               <div class="reallist" id="entrylist">
 
@@ -103,8 +210,8 @@
                   </div>
                   <div class="info">
                     <span>{{ value['address'] }}</span> &bull;
-                    <span>room size: {{ value['size'] }}m²</span> &bull;
-                    <span>monthly costs: €{{ value['price_monthly'] }}</span>
+                    <span>room size:&#8209;{{ value['size'] }}m²</span> &bull;
+                    <span>monthly costs:&#8209;€{{ value['price_monthly'] }}</span>
                   </div>
                 </a>
 
@@ -113,13 +220,6 @@
                 </script>
 
               {% endfor %}
-              </div>
-              <div class="footer categories">
-                <p class="cat-it">IT</p>
-                <p class="cat-design">Design</p>
-                <p class="cat-law">Law</p>
-                <p class="cat-mgmt">Management</p>
-                <p class="cat-none">Other</p>
               </div>
               </div>
             </div>

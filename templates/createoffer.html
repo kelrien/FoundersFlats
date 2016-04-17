@@ -8,7 +8,24 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ url_for('static', filename='media/favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='media/favicon/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='media/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='media/favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='media/favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='media/favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='media/favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='media/favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='media/favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='media/favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='media/favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='media/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='media/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='media/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='media/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='media/favicon/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ url_for('static', filename='ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
 
     <title>FounderFlats</title>
 
@@ -41,27 +58,29 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">FounderFlats</a>
-          <span class="brand-info">LEARN CONNECT LIVE</span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/offers">Offers</a></li>
-            <li><a href="/requests">Requests</a></li>
             <li class="active"><a href="/createoffer">Create Offer</a></li>
+            <li><a href="/requests">Requests</a></li>
             <li><a href="/createrequest">Create Request</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/login">Login</a></li>
+            {% if loggedin %} <li><a href="/logout">Logout</a></li> {% else %} <li><a href="/login">Login</a></li> {% endif %}
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
 
     <div class="container contentsite">
+
+      {% if loggedin %}
+
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-xs-12">
-          <h2>Inserieren</h2>
+          <h2>Create Offer</h2>
         </div>
       </div>
 
@@ -70,18 +89,19 @@
 
           <div class=" ff-offer-info-item">
             <div class="ff-offer-info-item-title">Your name</div>
-            <div class="ff-offer-info-item-detail">Jim Beam</div>
+            <div class="ff-offer-info-item-detail">{{ profile['name'] }}</div>
           </div>
 
-          <div class=" ff-offer-info-item">
+          <div class="ff-offer-info-item">
             <div class="ff-offer-info-item-title">Your Skills</div>
+
             <div class="ff-offer-info-item-detail categories">
-              <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="IT">&nbsp;</p>
-              <p class="cat-design" data-toggle="tooltip" data-placement="bottom" title="Design">&nbsp;</p>
-              <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Law">&nbsp;</p>
-              <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Management">&nbsp;</p>
-              <p class="cat-none" data-toggle="tooltip" data-placement="bottom" title="Other">&nbsp;</p>
+              {% if profile['categories']['1'] != '0' %}<p class="cat-it" data-toggle="tooltip" data-placement="bottom" title="IT">&nbsp;</p>{% else %} <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="IT">&nbsp;</p> {% endif %}
+              {% if profile['categories']['2'] != '0' %}<p class="cat-design" data-toggle="tooltip" data-placement="bottom" title="Design">&nbsp;</p>{% else %} <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Design">&nbsp;</p> {% endif %}
+              {% if profile['categories']['3'] != '0' %}<p class="cat-law" data-toggle="tooltip" data-placement="bottom" title="Law">&nbsp;</p>{% else %} <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Law">&nbsp;</p> {% endif %}
+              {% if profile['categories']['4'] != '0' %}<p class="cat-mgmt" data-toggle="tooltip" data-placement="bottom" title="Management">&nbsp;</p>{% else %} <p class="cat-invis" data-toggle="tooltip" data-placement="bottom" title="Management">&nbsp;</p> {% endif %}
             </div>
+
           </div>
 
           <div class=" ff-offer-info-item">
@@ -98,8 +118,9 @@
         <div class="col-xs-12 col-md-8 ff-form">
         	<form action="/createoffer" method="POST">
 			  <div class="form-group">
-			    <label for="form-title">Title</label>
-			    <input type="text" class="form-control" id="form-title" placeholder="Title" name="title">
+			    <label for="form-title">Title (5-40 characters)</label>
+			    <input type="text" class="form-control" id="form-title" placeholder="Title" name="title" data-error="Title has to be 5 - 40 characters" data-minlength="5" data-minlength="40" required>
+    			<div class="help-block with-errors"></div>
 			  </div>
 
 			  <div class="form-group">
@@ -169,8 +190,8 @@
 
 
 			  <div class="form-group">
-			    <label for="form-address">Address</label>
-			    <input type="text" class="form-control" id="form-address" placeholder="Address" name="address">
+			    <label for="pac-input">Address</label>
+			    <input type="text" class="form-control" id="pac-input" placeholder="Address" name="address" required>
 			  </div>
 
 		      <div class="row">
@@ -179,7 +200,7 @@
 				    <label for="form-monthly">Monthly costs</label>
 				    <div class="input-group">
 				      <div class="input-group-addon">€</div>
-				      <input type="text" class="form-control" id="form-monthly" placeholder="Monthly costs" name="monthly_cost">
+				      <input type="number" min="0" max="99999" class="form-control" id="form-monthly" placeholder="Monthly costs" name="monthly_cost" value="0">
 				      <div class="input-group-addon">.00</div>
 				    </div>
 				  </div>
@@ -188,7 +209,7 @@
 				    <label for="form-single">Onetime costs</label>
 				    <div class="input-group">
 				      <div class="input-group-addon">€</div>
-				      <input type="text" class="form-control" id="form-single" placeholder="Onetime costs" name="single_cost">
+				      <input type="number" min="0" max="99999" class="form-control" id="form-single" placeholder="Onetime costs" name="single_cost" value="0">
 				      <div class="input-group-addon">.00</div>
 				    </div>
 				  </div>
@@ -196,7 +217,7 @@
 				  <div class="form-group col-xs-12 col-md-4">
 				    <label for="form-size">Room size</label>
 				    <div class="input-group">
-				      <input type="text" class="form-control" id="form-size" placeholder="Room size" name="size">
+				      <input type="number" min="0" max="99999" class="form-control" id="form-size" placeholder="Room size" name="size" value="0">
 				      <div class="input-group-addon">m²</div>
 				    </div>
 				  </div>
@@ -237,6 +258,23 @@
         </div>
       </div>
 
+      <div id="map"></div>
+
+      {% else %}
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Oh no, you cannot do that</h2>
+          <h4>You have to log in first!</h4>
+        </div>
+        <div class="docenter">
+          <a class="btn btn-primary" href="/login">Take me to the log in</a>
+        </div>
+      </div>
+
+      {% endif %}
+
       <hr>
 
       <footer>
@@ -256,6 +294,11 @@
     <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
 
+
+    {% if loggedin %}
+    <script src="{{ url_for('static', filename='js/validator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/create.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqLWZNP0JIVI12zty6460l19SpV-sLgfg&libraries=places&callback=initAutocomplete" async defer></script>
+	{% endif %}
   </body>
 </html>

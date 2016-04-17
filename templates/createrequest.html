@@ -36,6 +36,7 @@
     <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -60,11 +61,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/offers">Offers</a></li>
             <li><a href="/createoffer">Create Offer</a></li>
             <li><a href="/requests">Requests</a></li>
-            <li><a href="/createrequest">Create Request</a></li>
+            <li class="active"><a href="/createrequest">Create Request</a></li>
             <li><a href="/profile">Profile</a></li>
             {% if loggedin %} <li><a href="/logout">Logout</a></li> {% else %} <li><a href="/login">Login</a></li> {% endif %}
           </ul>
@@ -72,65 +73,15 @@
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>GO BIG OR GO HOME</h1>
-        <h2>...or do <b>both</b></h2>
-      </div>
-    </div>
-
-    <div class="container">
+    <div class="container contentsite">
       <!-- Example row of columns -->
-      <div class="row ff-description">
-        <h3>What is FounderFlats?</h3>
-        <div class="col-md-8 col-md-offset-2">
-          <p>Founder Flats helps <b>dynamic entrepreneurs</b> to find the perfect place to stay. Make sure you will share your flat with people as <b>passionate</b> as you. Save your <b>time</b> and do not worry about location: we will show you the one filled with <b>entrepreneurial spirit</b>.</p>
-          <p>Go big even after going <b>home</b>.</p>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Feature is being developed</h2>
+          <h4>We work on delivering you even more in the future!</h4>
         </div>
-      </div>
-
-      <div class="ff-separator">&middot; &middot; &middot; &middot; &middot;</div>
-
-      <!-- Example row of columns -->
-      <div class="row ff-info">
-        <div class="col-md-4">
-          <h3>Learn</h3>
-          <div class="icon-container"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></div>
-          <p>The perfect environment for continuous learning has never been closer.  Exchange experiences, ask for advice, get inspired, <b>grow</b>.</p>
-        </div>
-        <div class="col-md-4">
-          <h3>Connect</h3>
-          <div class="icon-container"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></div>
-          <p>Build your network in the city before you even get there and get to know the <b>right people</b> with the entrepreneurial mindset in the <b>right place</b>: your apartment. </p>
-       </div>
-        <div class="col-md-4">
-          <h3>Live</h3>
-          <div class="icon-container"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span></div>
-          <p>We show you the <b>right city district</b> where people <b>think</b> and <b>live</b> like you.  No need to say goodbye to the entrepreneurial environment after coming back home.</p>
-        </div>
-      </div>
-
-      <div class="ff-separator">&middot; &middot; &middot; &middot; &middot;</div>
-
-      <!-- Example row of columns -->
-      <div class="row ff-info">
-        <h3>How to use</h3>
-        <div class="col-xs-6 col-md-3">
-          <div class="icon-container"><img src="{{ url_for('static', filename='media/xing_200.png') }}"></div>
-          <p class="bigger">Use your Xing profile</p>
-        </div>
-        <div class="col-xs-6 col-md-3">
-          <div class="icon-container"><img src="{{ url_for('static', filename='media/tie_200.png') }}"></div>
-          <p class="bigger">Specify your profession</p>
-       </div>
-        <div class="col-xs-6 col-md-3">
-          <div class="icon-container"><img src="{{ url_for('static', filename='media/binoculars_200.png') }}"></div>
-          <p class="bigger">Who are you looking for?</p>
-        </div>
-        <div class="col-xs-6 col-md-3">
-          <div class="icon-container"><img src="{{ url_for('static', filename='media/share_200.png') }}"></div>
-          <p class="bigger">Connect with dream flat mates</p>
+        <div class="docenter">
+          <a class="btn btn-primary" href="/offers">Search Offers instead</a>
         </div>
       </div>
 
@@ -148,6 +99,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"><\/script>')</script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
   </body>

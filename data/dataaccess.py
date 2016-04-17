@@ -1,5 +1,6 @@
 import sqlite3
 import json
+import datetime
 
 DB_FILE_NAME = "ff.db"
 
@@ -13,20 +14,65 @@ def _execute_sql(statement, parameters=(), commit = True):
         return (result, last_row_id)
 
 def create_user(params):
-    print "Creating User", params
     result = _execute_sql("INSERT INTO user VALUES (?,?,?,?)", params)
     return result
 
 def get_user(xid):
     parameters = (xid, )
     result = _execute_sql("SELECT rowid,* FROM user WHERE xid=?", parameters)
-    print result[0]
     if len(result[0]) == 0:
         return None
     else:
         user = {'id': result[0][0][1], "categories": result[0][0][2], "profile": result[0][0][4], "name": result[0][0][3] }
-        print "GET_USER_FUNCTION", user
         return user
+
+def update_user(params):
+    result = _execute_sql("UPDATE user SET categories=? WHERE xid=?",params)
+    return result
+
+def filter_offers(price = None, size = None, offered = None, wanted = None):
+    offers = get_offers().values()
+    print "BEFORE", len(offers)
+    if price:
+        for i, offer in enumerate(offers):
+            single_price = int(offer["price_monthly"])
+            if single_price > price:
+                offers.pop(i)
+    if size:
+        for i, offer in enumerate(offers):
+            single_size = int(offer["size"])
+            if single_size < size:
+                offers.pop(i)
+    if offered:
+        rmv = []
+        for i, offer in enumerate(offers):
+            they_want = offer["we_need"]
+            match = False
+            for index in ["1","2", "3", "4"]:
+                if they_want[index] == "1" and offered[index] == "1":
+                    print "match!"
+                    match = True
+                    break
+            if not match:
+                rmv.append(offer)
+        for obj in rmv:
+            offers.remove(obj)
+    if wanted:
+        rmv = []
+        for i, offer in enumerate(offers):
+            they_offer = offer["we_offer"]
+            match = False
+            for index in ["1","2", "3", "4"]:
+                if they_offer[index] != "0" and wanted[index] == "1":
+                    print "match!"
+                    match = True
+                    break
+            if not match:
+                rmv.append(offer)
+        for obj in rmv:
+            offers.remove(obj)
+    print "AFTER", len(offers)
+    return offers
 
 def create_request(params):
     pass
@@ -34,11 +80,7 @@ def create_request(params):
 def get_request(id):
     pass
 
-def del_request(params):
-    pass
-
 def create_offer(params):
-    # (1 XID, 2 ADDRESS, 3 PRICE_MONTHLY, 4 PRICE_ONCE, 5 SIZE, 5 TITLE, 6 DESCRIPTION, 7 START, 8 END, 9 WE_OFFER, 10 WE_WANT, 11 ALBUM_ID)
     result = _execute_sql("INSERT INTO offer VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", params)
     id = result[1]
     return id
@@ -61,7 +103,6 @@ def get_offers():
     return offers
 
 def parse_offer(entry):
-    # (5, u'16505383_e5736b', u'MANNHEIM KWADRATE', 1000.0, 50.0, 10.0, u'DEVELOPER FLAT', u'KRASSER SCHEISS', u'27.03.2016', u'30.04.2016', u"{1: u'1', 2: u'2', 3: u'3', 4: u'4'}", u"{1: u'on', 2: u'on', 3: u'on', 4: u'on'}", 0)
     result = {
         "offer_id": entry[0],
         "creator_id": entry[1],
@@ -77,15 +118,13 @@ def parse_offer(entry):
         "we_need": json.loads(entry[11]),
         "album_id": entry[12]
     }
-    print result
     return result
-
-def del_offer(params):
-    pass
 
 if __name__ == '__main__':
     DB_FILE_NAME ="../ff.db"
-    print "Fetching test data:", get_user("16505383_e5736b")
+    # print "Fetching test data:", get_user("16505383_e5736b")
+    # update_user((json.dumps({"1":0, "2":0, "3": 1, "4": 0, "5":1}),"16505383_e5736b"))
     # print "ADDING NEW OFFER:", create_offer(("TEST_USER", "A5, 1 Mannheim", 450, 50, 43.5, "DEVELOPER LOFT", "FANCY LOFT IN DEN MANNHEIM QUADRATEN", "1.1.2017", "2.4.2017", "{}", "{}", 0))
-    print "Fechting offers: "
-    print get_offers()
+    # print "Fechting offers: "
+    # print get_offers()
+    filter_offers(price=None, size=None, wanted = None, offered={"1":"0","2":"0","3":"1","4":"0","5":"0"})
