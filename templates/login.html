@@ -61,7 +61,7 @@
         $('#userimg').attr("src", response.user.photo_urls.maxi_thumb);
         $.ajax({
           type: "POST",
-          url: "http://founderflats.sytes.net/login",
+          url: "http://"+location.hostname+"/login",
           data: JSON.stringify(response.user),
           success: function(data, textstatus, responseObject){
             if(data["id"]){
@@ -119,7 +119,7 @@
         <div class="docenter">
           <script type="xing/login">
           {
-            "consumer_key": "YOUR CONSUMER KEY"
+            "consumer_key": "YOUR-XING-KEY"
           }
           </script>
         </div>

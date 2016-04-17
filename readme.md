@@ -7,7 +7,7 @@ To run this project you need to have [git](https://git-scm.com/book/en/v2/Gettin
 1. clone the repository: `git clone https://github.com/kelrien/FoundersFlats.git`
 2. get the requirements using pip: `pip install -r requirements.txt`
 3. get your xing consumer key for your site: https://dev.xing.com/plugins/login_with/new
-4. Edit templates/login.html and replace `"YOUR CONSUMER ID"` with a valid consumer id
+4. Edit templates/login.html and replace `"YOUR-XING-KEY"` with a valid consumer id
 5. run `python setup.py`
 6. run `python app.py` to start the flask server
 7. Enjoy!
