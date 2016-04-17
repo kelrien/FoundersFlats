@@ -97,7 +97,7 @@ def filter_offers():
     result = {}
     for i, value in enumerate(values):
         result[str(i)] = value
-    return render_template("offers.html", offers =result,  loggedin=(xid is not None))
+    return render_template("offers.html", offers =result, formdata=request.form,  loggedin=(xid is not None))
 
 
 @app.route('/offers/<int:id>')
