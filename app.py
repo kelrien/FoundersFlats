@@ -30,8 +30,8 @@ def transmit_credentials():
         print "User exists"
         print user
     else:
-        new_dict = json.dumps({"1": 0, "2": 0, "3": 0, "4": 0, "5":0})
-        params = (id, "", name, profile)
+        new_dict = json.dumps({"1": "0", "2": "0", "3": "0", "4": "0", "5":"0"})
+        params = (id, new_dict, name, profile)
         print "User does not exist, creating...", params
         dataaccess.create_user(params)
     response = current_app.make_response(redirect('/'))
