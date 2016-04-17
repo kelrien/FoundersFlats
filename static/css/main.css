@@ -207,7 +207,7 @@ body {
 
 .ff-map-list .reallist {
 	overflow-y: auto;
-	height: 80%;
+	height: 76%;
 }
 
 .ff-map-list .entry {
@@ -297,7 +297,7 @@ body {
 	}
 
 	.ff-maprow:before {
-		padding-top: 50%;
+		padding-top: 44%;
 	}
 }
 

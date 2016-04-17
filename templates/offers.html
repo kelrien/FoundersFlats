@@ -114,7 +114,7 @@
                         <div class="ff-checkbox ff-checkbox-toggle">
                           <input type="hidden" name="search_mgmt" value="{% if formdata and formdata['search_mgmt']!='0'%}1{%else%}0{%endif%}">
                           <div class="state">{% if formdata and formdata['search_mgmt']!='0'%}✔{%else%}✘{%endif%}</div>
-                          <div class="desc cat-mgmt">Management</div>
+                          <div class="desc cat-mgmt">Mgmt</div>
                         </div>
 
                       </div>
@@ -146,7 +146,7 @@
                         <div class="ff-checkbox ff-checkbox-toggle">
                           <input type="hidden" name="offer_mgmt" value="{% if (formdata and formdata['offer_mgmt']!='0') or (not formdata and profile and profile['categories']['4'] != '0' )%}1{%else%}0{%endif%}">
                           <div class="state">{% if (formdata and formdata['offer_mgmt']!='0') or (not formdata and profile and profile['categories']['4'] != '0' )%}✔{%else%}✘{%endif%}</div>
-                          <div class="desc cat-mgmt">Management</div>
+                          <div class="desc cat-mgmt">Mgmt</div>
                         </div>
 
                       </div>
@@ -203,7 +203,7 @@
                     </div>
                   </div>
                   <div class="timespan">
-                    starting  
+                    starting 
                     <b>{% if value['from'] %} {{ value['from'] }} {% else %} now {% endif %}</b>
                     up until
                     <b>{% if value['to'] %} {{ value['to'] }} {% else %} unlimited {% endif %}</b>

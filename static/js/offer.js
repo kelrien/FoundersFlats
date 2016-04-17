@@ -6,7 +6,7 @@ function initMap() {
 
   // Create a map object and specify the DOM element for display.
   var map = new google.maps.Map(document.getElementById("googleMap"), {
-    center:new google.maps.LatLng(49.487760, 8.466242),
+    center:new google.maps.LatLng(49.483411, 8.475941),
     zoom:14,
   });
   var geocoder = new google.maps.Geocoder();
