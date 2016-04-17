@@ -30,8 +30,8 @@ def transmit_credentials():
         print "User exists"
         print user
     else:
-        new_dict = json.dumps({"1": 0, "2": 0, "3": 0, "4": 0, "5":0})
-        params = (id, "", name, profile)
+        new_dict = json.dumps({"1": "0", "2": "0", "3": "0", "4": "0"})
+        params = (id, new_dict, name, profile)
         print "User does not exist, creating...", params
         dataaccess.create_user(params)
     response = current_app.make_response(redirect('/'))
@@ -65,10 +65,13 @@ def update_profile():
 def offers():
     result = dataaccess.get_offers()
     xid = request.cookies.get("id")
+    if not xid:
+        return render_template("offers.html", offers=result, loggedin=(xid is not None))
     user = dataaccess.get_user(xid)
+    user["categories"] = json.loads(user["categories"])
     print user
     print result
-    return render_template("offers.html", offers=result, loggedin=(xid is not None))
+    return render_template("offers.html", offers=result, profile=user, loggedin=(xid is not None))
 
 
 
@@ -97,7 +100,7 @@ def filter_offers():
     result = {}
     for i, value in enumerate(values):
         result[str(i)] = value
-    return render_template("offers.html", offers =result, formdata=request.form,  loggedin=(xid is not None))
+    return render_template("offers.html", offers=result, formdata=request.form, loggedin=(xid is not None))
 
 
 @app.route('/offers/<int:id>')

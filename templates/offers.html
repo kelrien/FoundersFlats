@@ -92,27 +92,27 @@
                     <div class="col-xs-6">
                       <div class="form-group">
                       <div>
-                        <span>I need: </span>
+                        <span>I want: </span>
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="search_it" value="{% if formdata and formdata['search_it']!='0'%}1{%else%}0{%endif%}>">
+                          <input type="hidden" name="search_it" value="{% if formdata and formdata['search_it']!='0'%}1{%else%}0{%endif%}">
                           <div class="state">{% if formdata and formdata['search_it']!='0'%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-it">IT</div>
                         </div>
 
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="search_design" value="{% if formdata and formdata['search_design']!='0'%}1{%else%}0{%endif%}>">
+                          <input type="hidden" name="search_design" value="{% if formdata and formdata['search_design']!='0'%}1{%else%}0{%endif%}">
                           <div class="state">{% if formdata and formdata['search_design']!='0'%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-design">Design</div>
                         </div>
 
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="search_law" value="{% if formdata and formdata['search_law']!='0'%}1{%else%}0{%endif%}>">
+                          <input type="hidden" name="search_law" value="{% if formdata and formdata['search_law']!='0'%}1{%else%}0{%endif%}">
                           <div class="state">{% if formdata and formdata['search_law']!='0'%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-law">Law</div>
                         </div>
 
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="search_mgmt" value="{% if formdata and formdata['search_mgmt']!='0'%}1{%else%}0{%endif%}>">
+                          <input type="hidden" name="search_mgmt" value="{% if formdata and formdata['search_mgmt']!='0'%}1{%else%}0{%endif%}">
                           <div class="state">{% if formdata and formdata['search_mgmt']!='0'%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-mgmt">Management</div>
                         </div>
@@ -126,26 +126,26 @@
                       <div>
                         <span>I got: </span>
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="offer_it" value="{% if formdata and formdata['offer_it']!='0'%}1{%else%}0{%endif%}>">
-                          <div class="state">{% if formdata and formdata['offer_it']!='0'%}✔{%else%}✘{%endif%}</div>
+                          <input type="hidden" name="offer_it" value="{% if (formdata and formdata['offer_it']!='0') or (not formdata and profile and profile['categories']['1'] != '0' )%}1{%else%}0{%endif%}">
+                          <div class="state">{%  if (formdata and formdata['offer_it']!='0') or (not formdata and profile and profile['categories']['1']!= '0' )%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-it">IT</div>
                         </div>
 
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="offer_design" value="{% if formdata and formdata['offer_design']!='0'%}1{%else%}0{%endif%}>">
-                          <div class="state">{% if formdata and formdata['offer_design']!='0'%}✔{%else%}✘{%endif%}</div>
+                          <input type="hidden" name="offer_design" value="{% if (formdata and formdata['offer_design']!='0') or (not formdata and profile and profile['categories']['2'] != '0' )%}1{%else%}0{%endif%}">
+                          <div class="state">{% if (formdata and formdata['offer_design']!='0') or (not formdata and profile and profile['categories']['2'] != '0' )%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-design">Design</div>
                         </div>
 
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="offer_law" value="{% if formdata and formdata['offer_law']!='0'%}1{%else%}0{%endif%}>">
-                          <div class="state">{% if formdata and formdata['offer_law']!='0'%}✔{%else%}✘{%endif%}</div>
+                          <input type="hidden" name="offer_law" value="{% if (formdata and formdata['offer_law']!='0') or (not formdata and profile and profile['categories']['3'] != '0' )%}1{%else%}0{%endif%}">
+                          <div class="state">{% if (formdata and formdata['offer_law']!='0') or (not formdata and profile and profile['categories']['3'] != '0' )%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-law">Law</div>
                         </div>
 
                         <div class="ff-checkbox ff-checkbox-toggle">
-                          <input type="hidden" name="offer_mgmt" value="{% if formdata and formdata['offer_mgmt']!='0'%}1{%else%}0{%endif%}>">
-                          <div class="state">{% if formdata and formdata['offer_mgmt']!='0'%}✔{%else%}✘{%endif%}</div>
+                          <input type="hidden" name="offer_mgmt" value="{% if (formdata and formdata['offer_mgmt']!='0') or (not formdata and profile and profile['categories']['4'] != '0' )%}1{%else%}0{%endif%}">
+                          <div class="state">{% if (formdata and formdata['offer_mgmt']!='0') or (not formdata and profile and profile['categories']['4'] != '0' )%}✔{%else%}✘{%endif%}</div>
                           <div class="desc cat-mgmt">Management</div>
                         </div>
 
@@ -158,14 +158,14 @@
                     <div class="col-xs-6">
                       <div class="input-group">
                         <div class="input-group-addon">€</div>
-                        <input type="text" class="form-control" id="form-single" placeholder="Maximum Monthly costs" name="monthly_cost" {% if formdata and formdata['monthly_cost']!=''%} value="{{formdata['monthly_cost']}}"{%endif%}>
+                        <input type="number" min="0" max="99999" class="form-control" id="form-single" placeholder="Maximum Monthly costs" name="monthly_cost" {% if formdata and formdata['monthly_cost']!=''%} value="{{formdata['monthly_cost']}}"{%endif%}>
                         <div class="input-group-addon">.00</div>
                       </div>
                     </div>
 
                     <div class="col-xs-6">
                       <div class="input-group">
-                        <input type="text" class="form-control" id="form-size" placeholder="Minimum Room size" name="size" {% if formdata and formdata['size']!=''%} value="{{formdata['size']}}"{%endif%}>
+                        <input type="number" min="0" max="99999" class="form-control" id="form-size" placeholder="Minimum Room size" name="size" {% if formdata and formdata['size']!=''%} value="{{formdata['size']}}"{%endif%}>
                         <div class="input-group-addon">m²</div>
                       </div>
                     </div>
@@ -194,7 +194,7 @@
                       {% if value['we_offer']['5'] != '0' %} <p class="cat-none">{{ value['we_offer']['5'] }}</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
                     </div>
                     <div class="categories">
-                      <span>needs:</span>
+                      <span>wants:</span>
                       {% if value['we_need']['1'] != '0' %} <p class="cat-it">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
                       {% if value['we_need']['2'] != '0' %} <p class="cat-design">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
                       {% if value['we_need']['3'] != '0' %} <p class="cat-law">&nbsp;</p> {% else %} <p class="cat-invis">&nbsp;</p> {% endif %}
@@ -203,15 +203,15 @@
                     </div>
                   </div>
                   <div class="timespan">
-                    from 
+                    starting  
                     <b>{% if value['from'] %} {{ value['from'] }} {% else %} now {% endif %}</b>
                     up until
                     <b>{% if value['to'] %} {{ value['to'] }} {% else %} unlimited {% endif %}</b>
                   </div>
                   <div class="info">
                     <span>{{ value['address'] }}</span> &bull;
-                    <span>room size:&#8209;{{ value['size'] }}m²</span> &bull;
-                    <span>monthly costs:&#8209;€{{ value['price_monthly'] }}</span>
+                    <span>room size:&nbsp;{{ value['size'] }}m²</span> &bull;
+                    <span>monthly costs:&nbsp;€{{ value['price_monthly'] }}0</span>
                   </div>
                 </a>
 
@@ -226,10 +226,11 @@
           </div>
         </div>
 
-      <!-- Example row of columns -->
+    </div>
 
+
+    <div class="container">
       <hr>
-
 
       <footer>
         <p>&copy; 2016 FounderFlats</p>
@@ -246,8 +247,8 @@
     <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqLWZNP0JIVI12zty6460l19SpV-sLgfg&callback=initMap" async defer></script>
 
     <script src="{{ url_for('static', filename='js/offer.js') }}"></script>
-  </body>
-</html>
+<script src="https://maps.googleapis.com/maps/api/js?key
+=AIzaSyAqLWZNP0JIVI12zty6460l19SpV-sLgfg&callback=initMap" async
+defer></script>   </body> </html>
