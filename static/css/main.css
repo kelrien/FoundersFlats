@@ -4,40 +4,42 @@ body {
 }
 
 /* PIN COLORS */
-.cat-invis {background-color: #EEE;}
-.cat-none {background-color: #8C9091;}
-.cat-it {background-color: #2980B9;}
-.cat-design {background-color: #F5A503;}
-.cat-law {background-color: #00A388;}
-.cat-mgmt {background-color: #F2385A;}
+	.cat-invis {background-color: #EEE;}
+	.cat-none {background-color: #8C9091;}
+	.cat-it {background-color: #2980B9;}
+	.cat-design {background-color: #F5A503;}
+	.cat-law {background-color: #00A388;}
+	.cat-mgmt {background-color: #F2385A;}
 
 
 /* MAIN PAGE */
 @media (min-width: 768px) {
 	.navbar {
-	    height: 50px !important;
+	  height: 50px !important;
 	}
 
-	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+	.navbar-inverse .navbar-nav>.active>a,
+	.navbar-inverse .navbar-nav>.active>a:focus,
+	.navbar-inverse .navbar-nav>.active>a:hover {
 		height: 55px;
 	}
 }
 
 .navbar-brand {
-    padding: 15px 10px 15px 15px;
+  padding: 15px 10px 15px 15px;
 }
 
 .brand-info {
 	float: left;
-    height: 50px;
-    padding: 15px 25px 0 0;
-    font-size: 11px;
-    line-height: 22px;
-    color: #9d9d9d;
+  height: 50px;
+  padding: 15px 25px 0 0;
+  font-size: 11px;
+  line-height: 22px;
+  color: #9d9d9d;
 }
 
 .jumbotron {
-	background: url(../media/header.png) no-repeat center center fixed; 
+	background: url(../media/header.png) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -122,7 +124,7 @@ body {
 }
 
 .ff-maprow-content {
-	position:  absolute;
+	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -169,7 +171,7 @@ body {
 	width: 12px;
 	display: inline-block;
 	text-align: right;
-    margin-right: 2px;
+  margin-right: 2px;
 }
 
 .ff-map-list .header .ff-checkbox .desc {
@@ -340,7 +342,6 @@ body {
 	width: 70%;
 }
 
-
 .ff-offer-info .ff-offer-info-item .ff-offer-info-item-title-wide {
 	font-weight: bold;
 }
@@ -348,8 +349,6 @@ body {
 .ff-offer-info .ff-offer-info-item .ff-offer-info-item-detail-wide {
 	padding: 5px 0 0 15px;
 }
-
-
 
 .ff-offer-info .ff-offer-info-item .ff-offer-info-item-detail.categories p {
 	cursor: pointer;
@@ -378,8 +377,8 @@ body {
 .ff-form .ff-offering input {
 	width: 75px;
 	padding: 0 4px;
-    height: 20px;
-    margin: 0 10px 0 0;
+  height: 20px;
+  margin: 0 10px 0 0;
 }
 
 .ff-form .ff-checkbox {
@@ -403,20 +402,20 @@ body {
 	width: 20px;
 	display: inline-block;
 	text-align: right;
-    margin-right: 4px;
+  margin-right: 4px;
 }
 
 .ff-form .ff-checkbox .state-wide {
 	width: 40px;
 	display: inline-block;
-    margin-right: 4px;
+  margin-right: 4px;
 }
 
 .ff-form .ff-checkbox .state-wide input {
 	border: none;
 	background: none;
-    width: 48px;
-    padding: 0 0 0 5px;
+  width: 48px;
+  padding: 0 0 0 5px;
 	margin: 0;
 }
 
